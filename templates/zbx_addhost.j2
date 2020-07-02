@@ -1,0 +1,39 @@
+{
+    "jsonrpc":"2.0",
+    "auth":"ZBX_AUTH_TOKEN",
+    "method":"host.create",
+    "params": {
+        "host": "{{ VAR_Zabbix40AG_WIN_Hostname }}",
+        "name": "{{ VAR_Zabbix40AG_WIN_DisplayName }}",
+        "interfaces": [{
+            "type": 1,
+            "main": 1,
+            "useip": 1,
+            "ip": "{{ VAR_Zabbix40AG_WIN_HostIP }}",
+            "dns": "",
+            "port": "{{ VAR_Zabbix40AG_WIN_AgentPort }}"
+        }, {
+            "type": 2,
+            "main": 1,
+            "useip": 1,
+            "ip": "{{ VAR_Zabbix40AG_WIN_HostIP }}",
+            "dns": "",
+            "port": "{{ VAR_Zabbix40AG_WIN_SnmpPort }}"
+        }],
+        "groups": [
+{% for group in VAR_Zabbix40AG_WIN_HostGroups %}
+            {%if not loop.first%},{% endif %}{"groupid":"GROUP_ID_{{ loop.index0 }}"}
+{% endfor %}
+        ],
+{% if VAR_Zabbix40AG_WIN_Templates != None %}
+        "templates": [
+{% for template in VAR_Zabbix40AG_WIN_Templates %}
+            {%if not loop.first%},{% endif %}{"templateid":"TEMPLATE_ID_{{ loop.index0 }}"}
+{% endfor %}
+        ],
+{% endif %}
+        "inventory_mode": -1
+    },
+    "id": 1
+}
+

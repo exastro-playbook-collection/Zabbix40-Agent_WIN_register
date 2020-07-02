@@ -1,0 +1,28 @@
+###  vars file for ansible-zabbix-agent
+
+# regist to zabbix server
+  VAR_Zabbix40AG_WIN_serverregister: yes
+
+# Installation variables
+  VAR_Zabbix40AG_WIN_APITempPath: /tmp/zbx_api
+
+# Server variables
+  VAR_Zabbix40AG_WIN_Username: Admin
+  VAR_Zabbix40AG_WIN_Password: zabbix
+  VAR_Zabbix40AG_WIN_Server:
+  VAR_Zabbix40AG_WIN_ServerAddress: http://192.168.1.1/zabbix/
+
+# Host configuration variables
+  VAR_Zabbix40AG_WIN_Hostname: "{{ ansible_hostname }}"
+  VAR_Zabbix40AG_WIN_DisplayName: ""
+  VAR_Zabbix40AG_WIN_HostIP: "{{ ansible_host }}"
+  VAR_Zabbix40AG_WIN_AgentPort: 10050
+  VAR_Zabbix40AG_WIN_SnmpPort: 161
+
+  VAR_Zabbix40AG_WIN_HostGroups:
+    - Windows servers
+
+  VAR_Zabbix40AG_WIN_Templates:  []
+
+  zabbix40ag_WIN_OS_Version_2016: 'Microsoft Windows Server 2016'
+  zabbix40ag_WIN_OS_Version_2012R2: 'Microsoft Windows Server 2012 R2'
